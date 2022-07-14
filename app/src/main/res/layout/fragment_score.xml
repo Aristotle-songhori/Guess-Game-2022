@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".score.ScoreFragment">
+
+
+    <data>
+        <variable
+            name="scoreViewModel"
+            type="com.arastoo.guessgame.score.ScoreViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#966464">
+
+        <TextView
+            android:id="@+id/textView_yourScore"
+            android:layout_width="163dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="56dp"
+            android:background="#3F51B5"
+            android:gravity="center"
+            android:text="Your score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_finalScore"
+            android:layout_width="140dp"
+            android:layout_height="97dp"
+            android:layout_marginTop="96dp"
+            android:background="#FFC107"
+            android:gravity="center"
+            android:text="@{scoreViewModel.score.toString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_yourScore" />
+
+        <Button
+            android:id="@+id/button_newGame"
+            android:layout_width="202dp"
+
+            android:layout_height="49dp"
+            android:gravity="center"
+            android:onClick="@{() -> scoreViewModel.onPlayAgain()}"
+            android:text="New Game"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_finalScore"
+            app:layout_constraintVertical_bias="0.574" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".game.GameFragment">
+
+    <data>
+        <variable
+            name="gameViewModel"
+            type="com.arastoo.guessgame.game.GameViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#03A9F4">
+
+        <TextView
+            android:id="@+id/textView_Title"
+            android:layout_width="364dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="32dp"
+            android:background="#F44336"
+            android:gravity="center"
+            android:text="Word is :"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_word"
+            android:layout_width="364dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="36dp"
+            android:background="#E91E63"
+            android:gravity="center"
+            android:text="@{gameViewModel.word}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_Title" />
+
+        <TextView
+            android:id="@+id/textView_timer"
+            android:layout_width="364dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="44dp"
+            android:background="#9C27B0"
+            android:gravity="center"
+            android:text="@{gameViewModel.currentTimeString}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_word" />
+
+        <TextView
+            android:id="@+id/textView_score"
+            android:layout_width="364dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="44dp"
+            android:background="#3F51B5"
+            android:gravity="center"
+            android:text="@{gameViewModel.score.toString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.574"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_timer" />
+
+        <Button
+            android:id="@+id/button_skip"
+            android:onClick="@{() -> gameViewModel.onSkip()}"
+            android:layout_width="151dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="136dp"
+            android:gravity="center"
+            android:text="Skip"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_correct"
+            app:layout_constraintHorizontal_bias="0.321"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_score"
+            app:layout_constraintVertical_bias="0.202" />
+
+        <Button
+            android:id="@+id/button_correct"
+            android:onClick="@{() -> gameViewModel.onCorrect()}"
+            android:layout_width="156dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="136dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:text="Corecct"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_score"
+            app:layout_constraintVertical_bias="0.205" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
